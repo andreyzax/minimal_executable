@@ -2,8 +2,8 @@
 
 %include "elf.inc"
 %define BASE_ADDR 0x400000 ; "Traditional" program base on x86_64
-                           ; on x86_64 linux we can't load programs to address 0 or any andress thats too low. The kernal enforces an allowable
-                           ; minimal address at '/proc/sys/vm/mmap_min_addr' and will segfualt any program that tries to load below this!
+                           ; on x86_64 linux we can't load programs to address 0 or any address thats too low. The kernel enforces an allowable
+                           ; minimal address at '/proc/sys/vm/mmap_min_addr' and will segfault any program that tries to load below this!
 %define PAGE_SIZE 0x1000
 
 ORG BASE_ADDR ; must match p_vaddr of our segment
@@ -22,7 +22,7 @@ dw EM_X86_64  ; e_machine
 dd EV_CURRENT ; e_version
 dq _start     ; e_entry
 dq ph_table - $$  ; e_phoff
-dq 0          ; s_phoff - we don't have a section header table so we zero this out
+dq 0          ; e_shoff - we don't have a section header table so we zero this out
 dd 0          ; e_flags - currently there are no flags defined by the standard
 dw 64         ; e_ehsize - should be 64 on an ELFCLASS64 file (the 64 is just a coincidence it's not becuse of the 64 bits arch!)
 dw 56         ; e_phentsize - 56 on an ELFCLASS64 file
@@ -32,7 +32,7 @@ dw 0          ; e_shnum
 dw 0          ; e_shstrndx
 ; end of Elf64_Ehdr ------------------------------------------------------------------------------------------------
 ;
-; start of program header, in this minimal elf file we define just one Elf64_Phdr memeber
+; start of program header, in this minimal elf file we define just one Elf64_Phdr member
 ph_table:
 dd PT_LOAD     ; p_type
 dd PF_R | PF_X ; p_flags

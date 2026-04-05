@@ -22,7 +22,7 @@
     %define ELFOSABI_HPUX 1
     %define ELFOSABI_NETBSD 2
     %define ELFOSABI_GNU 3
-    %define ELFOSABI_LINUX ELFOSABI_GNU ; compatability alias
+    %define ELFOSABI_LINUX ELFOSABI_GNU ; compatibility alias
     %define ELFOSABI_SOLARIS 6
     %define ELFOSABI_AIX 7
     %define ELFOSABI_IRIX 8
@@ -38,7 +38,7 @@
     %define ET_EXEC 2
     %define ET_DYN 3
     %define ET_CORE 4
-    ; e_machine (architecture) values, not a compleate set since we are only a poc/toy implementation
+    ; e_machine (architecture) values, not a complete set since we are only a poc/toy implementation
     %define EM_386           3
     %define EM_MIPS          8
     %define EM_S370          9
