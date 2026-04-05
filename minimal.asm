@@ -1,6 +1,13 @@
 [BITS 64]
 
 %include "elf.inc"
+
+; Because ORG is BASE_ADDR, labels evaluate to their eventual virtual addresses.
+; Since p_offset = 0 and p_vaddr = BASE_ADDR, a byte at file offset X is mapped at:
+;     BASE_ADDR + X
+; Therefore:
+;     e_entry = _start
+; works directly, because _start already has its runtime virtual address.
 %define BASE_ADDR 0x400000 ; "Traditional" program base on x86_64
                            ; on x86_64 linux we can't load programs to address 0 or any address thats too low. The kernel enforces an allowable
                            ; minimal address at '/proc/sys/vm/mmap_min_addr' and will segfault any program that tries to load below this!
