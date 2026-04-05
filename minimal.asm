@@ -36,8 +36,8 @@ dw 0          ; e_shstrndx
 ph_table:
 dd PT_LOAD     ; p_type
 dd PF_R | PF_X ; p_flags
-dq 0           ; p_offset - To simplify alignment considerations we load the first 4KiB of the file, including the ELF & program headers.
-dq BASE_ADDR   ; p_vaddr - we load our code into the second page of virtual memory
+dq 0           ; p_offset - To simplify alignment considerations we load from file offset 0, including the ELF & program headers.
+dq BASE_ADDR   ; p_vaddr - we load our code into BASE_ADDR to match assembler expectations
 dq BASE_ADDR   ; p_paddr - this is not used in linux and from what I have seen it's just copied from p_vaddr
 dq end - $$    ; p_filesz
 dq end - $$    ; p_memsz
