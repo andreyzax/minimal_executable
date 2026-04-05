@@ -7,11 +7,11 @@ BINS = hello minimal
 .PHONY: all debug clean
 all: $(BINS) .gitignore
 
-hello: hello.s elf.inc
+hello: hello.asm elf.inc
 	$(AS) $(ASFLAGS) $< -o $@
 	chmod +x $@
 
-minimal: minimal.s elf.inc
+minimal: minimal.asm elf.inc
 	$(AS) $(ASFLAGS) $< -o $@
 	chmod +x $@
 
