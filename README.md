@@ -10,8 +10,9 @@ The goal is twofold:
 ## Files
 
 - `elf.inc` — ELF-related constants used by the examples
-- `minimal.s` — the smallest example in the repo; it simply exits with status 0
-- `hello.s` — a slightly larger example that writes a string to stdout and then exits
+- `minimal.asm` — the smallest example in the repo; it simply exits with status 0
+- `macro-minimal.asm` - same as `minimal.asm` but demonstrating NASM's macro features enabling a more understandable coding style
+- `hello.asm` — a slightly larger example that writes a string to stdout and then exits
 - `Makefile` — builds both examples as raw flat binaries using NASM
 
 ## What this project demonstrates
@@ -28,3 +29,16 @@ No linker is involved. NASM emits the final executable file directly.
 
 ```sh
 make
+```
+
+## Portability Notes
+
+This project is intentionally not portable.
+
+While the ELF format itself is largely consistent across systems, the examples here are specific to **x86-64 Linux**:
+
+- NASM only targets x86 architectures
+- the code uses Linux syscalls and conventions
+- the binaries rely on Linux loader behavior
+
+Porting to other ELF-based systems (e.g., BSD) should be possible with moderate changes. The overall file structure would remain similar.
