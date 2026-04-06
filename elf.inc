@@ -76,6 +76,33 @@
     %define PF_W (1 << 1)
     %define PF_R (1 << 2)
 
+    struc Elf64_Ehdr
+        .e_ident:      resb EI_NIDENT
+        .e_type:       resw 1
+        .e_machine:    resw 1
+        .e_version:    resd 1
+        .e_entry:      resq 1
+        .e_phoff:      resq 1
+        .e_shoff:      resq 1
+        .e_flags:      resd 1
+        .e_ehsize:     resw 1
+        .e_phentsize:  resw 1
+        .e_phnum:      resw 1
+        .e_shentsize:  resw 1
+        .e_shnum:      resw 1
+        .e_shstrndx:   resw 1
+    endstruc
 
+
+    struc Elf64_Phdr
+        .p_type:     resd 1
+        .p_flags:    resd 1
+        .p_offset:   resq 1
+        .p_vaddr:    resq 1
+        .p_paddr:    resq 1
+        .p_filesz:   resq 1
+        .p_memsz:    resq 1
+        .p_align:    resq 1
+    endstruc
 
 %endif
