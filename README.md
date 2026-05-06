@@ -1,4 +1,4 @@
-# minimal_executable
+# Minimal executable
 
 A small educational project that demonstrates how to handcraft a minimal Linux ELF64 executable with **NASM in flat binary mode**, without using a linker.
 
